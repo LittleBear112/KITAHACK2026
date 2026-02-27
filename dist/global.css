@@ -1,0 +1,1299 @@
+/* ========================================
+   OneJob / FastJob - 桌面版 CSS
+   删除所有移动端样式，保持宽屏布局
+   ======================================== */
+
+:root {
+  /* Brand / Primary (same for light & dark) */
+  --primary: #f97316;
+  --primary-hover: #ea580c;
+  --primary-light: #ffedd5;
+  --primary-on-light: #9a3412;
+  --accent: #f97316;
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
+
+  /* Semantic */
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+
+  /* LIGHT MODE - Default */
+  --bg: #fff7ed;
+  --card: #ffffff;
+  --card-subtle: #fefbf8;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+
+  /* Nav / pill buttons (light) */
+  --nav-pill-bg: #ffffff;
+  --nav-pill-border: rgba(148, 163, 184, 0.7);
+  --nav-pill-text: #111827;
+
+  /* OAuth buttons (light) */
+  --oauth-bg: #fef3c7;
+  --oauth-border: #fed7aa;
+  --oauth-text: #7c2d12;
+}
+
+/* DARK MODE */
+html[data-theme="dark"] {
+  --bg: #020617;
+  --card: #111827;
+  --card-subtle: #0f172a;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --border: #1f2937;
+
+  /* Nav / pill buttons (dark) */
+  --nav-pill-bg: rgba(15, 23, 42, 0.9);
+  --nav-pill-border: rgba(148, 163, 184, 0.85);
+  --nav-pill-text: #e5e7eb;
+
+  /* OAuth buttons (dark) */
+  --oauth-bg: #fef3c7;
+  --oauth-border: #fed7aa;
+  --oauth-text: #7c2d12;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "PingFang SC",
+    "Microsoft YaHei", sans-serif;
+
+  /* LIGHT MODE background with shapes */
+  background:
+    radial-gradient(circle at -10% 0%, rgba(251, 113, 133, 0.30) 0, transparent 55%),
+    radial-gradient(circle at 110% 10%, rgba(56, 189, 248, 0.25) 0, transparent 55%),
+    radial-gradient(circle at 15% 120%, rgba(251, 191, 36, 0.25) 0, transparent 60%),
+    var(--bg);
+
+  color: var(--text);
+  overflow-y: auto;
+  transition: background-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+}
+
+/* DARK MODE background with shapes */
+html[data-theme="dark"] body {
+  background:
+    radial-gradient(circle at -15% -10%, rgba(59, 130, 246, 0.25) 0, transparent 60%),
+    radial-gradient(circle at 120% 0%, rgba(244, 114, 182, 0.23) 0, transparent 60%),
+    radial-gradient(circle at 0% 120%, rgba(16, 185, 129, 0.20) 0, transparent 65%),
+    var(--bg);
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+/* ========================================
+   容器 - 宽屏布局 (1200-1400px)
+   ======================================== */
+.container {
+  max-width: 1200px; /* 桌面宽度 */
+  margin: 0 auto;
+  padding: 24px;
+  width: 100%;
+}
+
+/* 超宽屏幕 */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1400px;
+    padding: 32px;
+  }
+}
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border);
+}
+
+/* ========================================
+   按钮
+   ======================================== */
+.btn {
+  background: var(--primary);
+  color: #ffffff;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.15s ease, transform 0.05s ease, box-shadow 0.15s ease;
+  box-shadow: 0 6px 16px rgba(249, 115, 22, 0.35);
+}
+
+.btn:hover {
+  background: var(--primary-hover);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Nav pill buttons */
+.nav-pill-btn {
+  border-radius: 999px;
+  border: 1px solid var(--nav-pill-border);
+  background: var(--nav-pill-bg);
+  color: var(--nav-pill-text);
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.18);
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.05s ease, border-color 0.15s ease;
+}
+
+.nav-pill-btn:hover {
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.25);
+  transform: translateY(-1px);
+}
+
+.nav-pill-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
+}
+
+/* OAuth button */
+.oauth-btn {
+  width: 100%;
+  border-radius: 999px;
+  border: 1px solid var(--oauth-border);
+  background: var(--oauth-bg);
+  color: var(--oauth-text);
+  padding: 10px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.25);
+  transition: box-shadow 0.15s ease, transform 0.05s ease, filter 0.15s ease;
+}
+
+.oauth-btn:hover {
+  filter: brightness(1.03);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.3);
+}
+
+.oauth-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.3);
+}
+
+/* Remember checkbox */
+.remember-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1.5px solid rgba(148, 163, 184, 0.8);
+  background: var(--bg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.remember-checkbox:hover {
+  border-color: var(--primary);
+}
+
+.remember-checkbox:checked {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.remember-checkbox:checked::after {
+  content: "";
+  width: 6px;
+  height: 10px;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  transform: rotate(45deg);
+}
+
+/* ghost button */
+.btn-ghost {
+  background: transparent;
+  color: var(--muted);
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.btn-ghost:hover {
+  background: rgba(148, 163, 184, 0.12);
+}
+
+/* ========================================
+   表单输入
+   ======================================== */
+input,
+select,
+textarea {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 10px;
+  border-radius: var(--radius-md);
+  width: 100%;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Glass input for auth pages */
+.input-glass {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(209, 213, 219, 0.9);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  width: 100%;
+  font-size: 14px;
+  box-sizing: border-box;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 14px 40px rgba(148, 163, 184, 0.35);
+}
+
+.input-glass::placeholder {
+  color: rgba(148, 163, 184, 0.9);
+}
+
+html[data-theme="dark"] .input-glass {
+  background: rgba(15, 23, 42, 0.88);
+  border-color: rgba(55, 65, 81, 0.9);
+  color: #e5e7eb;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.95);
+}
+
+html[data-theme="dark"] .input-glass::placeholder {
+  color: rgba(148, 163, 184, 0.85);
+}
+
+/* ========================================
+   网格布局
+   ======================================== */
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.badge {
+  display: inline-block;
+  background: var(--primary-light);
+  color: var(--primary-on-light);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  margin-right: 6px;
+}
+
+.nav {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.spacer {
+  height: 16px;
+}
+
+/* ========================================
+   Dashboard
+   ======================================== */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #f3f4f6;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+html[data-theme="dark"] .pill {
+  background: #020617;
+}
+
+.pill .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #94a3b8;
+}
+
+.pill.success .dot {
+  background: var(--success);
+}
+.pill.warn .dot {
+  background: var(--warning);
+}
+.pill.info .dot {
+  background: #60a5fa;
+}
+.pill.danger .dot {
+  background: var(--danger);
+}
+
+.statgrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.stat {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  border: 1px solid var(--border);
+}
+
+.stat-value {
+  font-weight: 800;
+  font-size: 28px;
+}
+
+.stat-label {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+/* ========================================
+   表格
+   ======================================== */
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+.tr {
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+.th,
+.td {
+  text-align: left;
+  padding: 12px 14px;
+  font-size: 14px;
+}
+
+.th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 0;
+  align-items: center;
+}
+
+.row--jobs {
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+}
+
+.progress {
+  width: 100%;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.progress > span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #f97316, #fb923c);
+}
+
+.empty {
+  padding: 24px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ========================================
+   职位详情页
+   ======================================== */
+.job-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 88px;
+}
+
+.job-salary {
+  font-weight: 700;
+  font-size: 20px;
+  margin-top: 12px;
+}
+
+.job-company {
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.job-map {
+  margin-top: 16px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.job-section + .job-section {
+  margin-top: 24px;
+}
+
+.job-text {
+  margin-top: 8px;
+  white-space: pre-line;
+}
+
+.job-list {
+  margin-top: 8px;
+  padding-left: 20px;
+}
+
+.job-apply-bar {
+  position: sticky;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+  margin-top: 16px;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: var(--radius-lg);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+}
+
+html[data-theme="dark"] .job-apply-bar {
+  background: rgba(15, 23, 42, 0.96);
+}
+
+.job-fav-btn {
+  background: var(--card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.job-fav-btn:hover {
+  background: rgba(249, 115, 22, 0.08);
+  border-color: rgba(249, 115, 22, 0.4);
+}
+
+/* ========================================
+   职位列表卡片
+   ======================================== */
+.job-list-card {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  border: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 14px;
+  align-items: start;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.1s ease;
+}
+
+.job-list-card:hover {
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+  transform: translateY(-2px);
+}
+
+.job-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.job-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.job-content {
+  min-width: 0;
+}
+
+.job-title {
+  font-weight: 700;
+  font-size: 16px;
+  margin: 0 0 4px;
+}
+
+.job-company-loc {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.job-meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.job-price {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.job-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+/* ========================================
+   发布职位表单
+   ======================================== */
+.form-card {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* ========================================
+   认证页面
+   ======================================== */
+.auth-card-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 0;
+}
+
+.auth-hero {
+  padding: 40px;
+}
+
+.auth-form-panel {
+  padding: 40px;
+}
+
+/* ========================================
+   搜索行
+   ======================================== */
+.search-row {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr 1fr auto;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.search-row input,
+.search-row select {
+  width: 100%;
+  font-size: 15px;
+  padding: 12px;
+}
+
+.search-btn {
+  padding: 12px 24px;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+/* ========================================
+   职位图库
+   ======================================== */
+.job-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.job-gallery img {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+
+/* ========================================
+   人才搜索网格
+   ======================================== */
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.person-card {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.person-card:hover {
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   仪表板卡片网格
+   ======================================== */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+/* ========================================
+   职位网格 - 宽屏
+   ======================================== */
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 24px;
+}
+
+/* ========================================
+   动画
+   ======================================== */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: slideDown 0.3s ease-out;
+}
+
+/* ========================================
+   END OF DESKTOP-ONLY CSS
+   所有移动端样式已删除 - 保持宽屏布局
+   ======================================== */
+
+   /* ========================================
+   美化按钮样式 - 添加到 global.css 末尾
+   ======================================== */
+
+/* 职位卡片按钮组 */
+.job-card-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+/* 小按钮 - 通用样式 */
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-sm:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+}
+
+/* 主要操作按钮 - 橙色 */
+.btn-sm.primary {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.25);
+}
+
+.btn-sm.primary:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.35);
+}
+
+/* 次要操作按钮 - 灰色边框 */
+.btn-sm.secondary {
+  background: var(--card);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.btn-sm.secondary:hover {
+  background: rgba(148, 163, 184, 0.08);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* 危险操作按钮 - 红色 */
+.btn-sm.danger {
+  color: var(--danger);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.btn-sm.danger:hover {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: var(--danger);
+}
+
+/* 成功状态按钮 - 绿色 */
+.btn-sm.success {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.btn-sm.success:hover {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: var(--success);
+}
+
+/* 状态标签 - 美化 */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status-badge.active {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.status-badge.inactive {
+  background: rgba(148, 163, 184, 0.1);
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.status-badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+/* 图标按钮 */
+.btn-icon {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-icon:hover {
+  background: rgba(148, 163, 184, 0.08);
+  color: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+/* 按钮组 - 紧凑排列 */
+.btn-group {
+  display: inline-flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* 链接样式按钮 */
+.btn-link {
+  background: transparent;
+  border: none;
+  color: var(--primary);
+  padding: 4px 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-link:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+/* ========================================
+   雇主仪表盘职位卡片样式
+   ======================================== */
+
+.employer-job-card {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+
+.employer-job-card:hover {
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  border-color: rgba(249, 115, 22, 0.3);
+}
+
+.employer-job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 12px;
+}
+
+.employer-job-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 4px;
+}
+
+.employer-job-meta {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.employer-job-stats {
+  display: flex;
+  gap: 16px;
+  margin: 12px 0;
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.employer-job-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.employer-job-stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.employer-job-stat-label {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ========================================
+   响应式 - 桌面优化
+   ======================================== */
+
+@media (min-width: 768px) {
+  .btn-group {
+    gap: 8px;
+  }
+  
+  .employer-job-card {
+    padding: 24px;
+  }
+}
+
+/* ========================================
+   复制这段CSS到 global.css 最底部
+   和线上版本完全一样的按钮样式
+   ======================================== */
+
+/* 按钮容器 */
+.job-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+/* 按钮基础样式 - 圆角边框 */
+.job-action-btn {
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 999px;
+  border: 1.5px solid;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* 查看 - 深灰色 */
+.job-action-btn.view {
+  border-color: rgba(148, 163, 184, 0.6);
+  color: #94a3b8;
+}
+
+.job-action-btn.view:hover {
+  background: rgba(148, 163, 184, 0.1);
+  border-color: #94a3b8;
+}
+
+/* 编辑 - 深灰色 */
+.job-action-btn.edit {
+  border-color: rgba(148, 163, 184, 0.6);
+  color: #94a3b8;
+}
+
+.job-action-btn.edit:hover {
+  background: rgba(148, 163, 184, 0.1);
+  border-color: #94a3b8;
+}
+
+/* 查看申请人 - 蓝色 */
+.job-action-btn.applicants {
+  border-color: rgba(59, 130, 246, 0.6);
+  color: #3b82f6;
+}
+
+.job-action-btn.applicants:hover {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: #3b82f6;
+}
+
+/* 会闭职位 - 绿色 */
+.job-action-btn.toggle {
+  border-color: rgba(16, 185, 129, 0.6);
+  color: #10b981;
+}
+
+.job-action-btn.toggle:hover {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: #10b981;
+}
+
+/* 删除 - 红色 */
+.job-action-btn.delete {
+  border-color: rgba(239, 68, 68, 0.6);
+  color: #ef4444;
+}
+
+.job-action-btn.delete:hover {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: #ef4444;
+}
+
+/* 状态标签 - 开放中 */
+.status-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 999px;
+}
+
+.status-tag.active {
+  background: rgba(16, 185, 129, 0.12);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.status-tag::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+/* Dark Mode */
+html[data-theme="dark"] .job-action-btn.view,
+html[data-theme="dark"] .job-action-btn.edit {
+  border-color: rgba(148, 163, 184, 0.4);
+  color: #94a3b8;
+}
+
+html[data-theme="dark"] .job-action-btn.view:hover,
+html[data-theme="dark"] .job-action-btn.edit:hover {
+  background: rgba(148, 163, 184, 0.15);
+  border-color: #94a3b8;
+}
+
+/* ===== 完整按钮样式 ===== */
+
+/* 雇主仪表盘按钮 */
+.btn-pill {
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 999px;
+  border: 1.5px solid;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-pill-grey {
+  border-color: rgba(148, 163, 184, 0.6);
+  color: #94a3b8;
+}
+
+.btn-pill-grey:hover {
+  background: rgba(148, 163, 184, 0.1);
+}
+
+.btn-pill-blue {
+  border-color: rgba(59, 130, 246, 0.6);
+  color: #3b82f6;
+}
+
+.btn-pill-blue:hover {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.btn-pill-green {
+  border-color: rgba(16, 185, 129, 0.6);
+  color: #10b981;
+}
+
+.btn-pill-green:hover {
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.btn-pill-red {
+  border-color: rgba(239, 68, 68, 0.6);
+  color: #ef4444;
+}
+
+.btn-pill-red:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* 职位列表页筛选按钮 */
+.jobs-chip {
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 999px;
+  border: 1.5px solid rgba(148, 163, 184, 0.4);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.jobs-chip:hover {
+  background: rgba(148, 163, 184, 0.08);
+  border-color: rgba(148, 163, 184, 0.6);
+}
+
+.jobs-chip--active {
+  background: var(--primary) !important;
+  color: #ffffff !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3);
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 999px;
+  background: rgba(249, 115, 22, 0.1);
+  color: var(--primary);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+}
+
+/* ========================================
+   响应式设计 - 电脑宽屏，手机适配
+   添加到 global.css 最底部
+   ======================================== */
+
+/* === 基础容器设置 === */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* === 手机端 (屏幕宽度 < 768px) === */
+@media (max-width: 767px) {
+  .container {
+    max-width: 100%; /* 全屏 */
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
+  /* 手机上字体稍微小一点 */
+  body {
+    font-size: 14px;
+  }
+  
+  /* 导航栏在手机上可能需要调整 */
+  .nav {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+/* === 平板端 (768px - 1023px) === */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    max-width: 720px; /* 平板宽度 */
+  }
+}
+
+/* === 小型笔记本 (1024px - 1279px) === */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .container {
+    max-width: 960px; /* 小笔记本宽度 */
+  }
+}
+
+/* === 标准笔记本/台式机 (1280px - 1535px) === */
+@media (min-width: 1280px) and (max-width: 1535px) {
+  .container {
+    max-width: 1200px; /* 标准宽度 */
+  }
+}
+
+/* === 大屏幕 (≥ 1536px) === */
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1400px; /* 大屏幕宽度 */
+  }
+}
+
+/* === 特殊调整 === */
+
+/* 卡片在大屏幕上可以用Grid布局 */
+@media (min-width: 768px) {
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+}
+
+/* 手机上卡片是单列 */
+@media (max-width: 767px) {
+  .card-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
