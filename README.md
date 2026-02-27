@@ -1,22 +1,63 @@
-# JobBoard Firebase Starter (RTDB, Desktop-first)
+# FastJob – AI-Powered Job Matching Platform
 
-React + Vite + Firebase (Auth, Realtime Database, Storage, Hosting)
+FastJob is a web-based job marketplace built for KitaHack2026.
 
-## Quick Start
-1) Create Firebase project; enable Authentication (Email/Password + Google), Realtime Database, Storage.
-2) Put your config in `src/lib/firebase.js` (databaseURL required).
-3) Install deps: `npm install`
-4) Dev: `npm run dev` -> http://localhost:5173
-5) Deploy: `npm run build` then `npx firebase deploy`
+It connects employers and job seekers with an AI-powered matching system that evaluates candidate suitability using semantic embeddings.
 
-## Data
-- jobs/{jobId}
-- applications/{jobId}/{applicationId}
+---
 
-## Pages
-- /           (Homepage – Template 1)
-- /jobs       (Search – Template 2)
-- /jobs/:id   (Job details & apply – Template 3)
-- /employer   (Employer dashboard – Template 4)
-- /employer/:jobId/applicants (Applicants – Template 5)
-- /employer/post  (Post job form)
+## 🚀 Live Demo
+https://fastjob-db673.web.app/
+
+---
+
+## 💡 Key Features
+
+### 👨‍💼 Employer Side
+- Post jobs
+- View applicants
+- Accept / Reject / Hire candidates
+- Rate employees after job completion
+- Track attendance & performance
+
+### 👩‍💻 Applicant Side
+- Browse available jobs
+- Apply for positions
+- Build profile with skills & experience
+
+### 🤖 AI Matching System
+- Uses OpenAI Embeddings
+- Compares job descriptions with applicant profiles
+- Generates match score
+- Stores AI results in Firebase
+- Highlights top candidates for employers
+
+---
+
+## 🛠 Tech Stack
+- React + Vite
+- Firebase Realtime Database
+- Firebase Authentication
+- Firebase Cloud Functions (2nd Gen)
+- OpenAI API (Embeddings)
+
+---
+
+## 🧠 How AI Matching Works
+
+1. Job description is converted into a vector embedding.
+2. Applicant profile data is converted into embedding.
+3. Cosine similarity is calculated.
+4. Match score is cached into database.
+5. Employer sees ranked results instantly.
+
+---
+
+## 📂 Project Structure
+- `src/` – Frontend (React)
+- `functions/` – Backend AI matching logic
+- `firebase.json` – Hosting & Functions config
+
+---
+
+Built for KitaHack2026.
